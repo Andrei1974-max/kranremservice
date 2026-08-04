@@ -150,6 +150,8 @@ ul {
 
 /* Кнопка заявки */
 .btn-sales {
+  position: absolute;
+  left: 750px;
   background-color: var(--color-blue);
   color: #fff !important;
   padding: 10px 24px;
