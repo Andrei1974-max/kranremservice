@@ -29,13 +29,20 @@ body {
   --font-main: "Montserrat", sans-serif;
 }
 
-.container {
+/* .container {
   max-width: 1200px;
   height: 600px;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
-  /* УБРАНА ФИКСИРОВАННАЯ ВЫСОТА height: 700px - это ломало верстку! */
+} */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  /* height: 600px; - УДАЛИТЬ! */
 }
 
 a {
@@ -54,12 +61,13 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-white);
-  border-bottom: 1px solid #eeeeee;
+  background-color: #f7f7f7;
+  border-bottom: 3px solid rgb(230, 151, 6);
   position: sticky;
   top: 0;
   z-index: 1000;
   height: 80px; /* Фиксируем высоту шапки для стабильности */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .main-nav {
@@ -81,6 +89,7 @@ ul {
 }
 
 .logo-img {
+  border-radius: 50px;
   height: 50px;
   width: auto;
   display: block;
@@ -109,18 +118,31 @@ ul {
   white-space: nowrap;
 }
 
+/* Стиль для активного пункта меню (на который нажали) */
+/* Базовый стиль ссылки */
 .nav-item {
   position: relative;
-  color: #1c1c1c;
+  color: #1c1c1c; /* Черный по умолчанию */
   font-weight: 600;
   font-size: 15px;
   padding: 8px 0;
   transition: color 0.3s ease;
 }
 
-.nav-item:hover,
+/* Стиль при наведении (курсор наведен) */
+.nav-item:hover {
+  color: var(--color-blue); /* Синий при наведении */
+}
+
+/* Стиль АКТИВНОЙ ссылки (на которой мы находимся) */
 .nav-item.active {
-  color: var(--color-blue);
+  color: #007bc4 !important; /* ВСЕГДА синий, даже если убрали курсор */
+  border-bottom: 2px solid #007bc4; /* Полоска снизу для красоты */
+}
+
+/* Защита: если навели курсор на УЖЕ активную ссылку, она не должна менять цвет */
+.nav-item.active:hover {
+  color: #007bc4 !important;
 }
 
 /* Анимация бегущей рамки для пунктов меню */
@@ -165,7 +187,7 @@ ul {
 }
 
 .btn-sales:hover {
-  background-color: #005a9e;
+  background-color: #535304;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 123, 196, 0.3);
 }
@@ -178,6 +200,62 @@ ul {
   font-size: 24px;
   cursor: pointer;
   z-index: 1001;
+}
+
+.certificate-container {
+  max-width: 1000px; /* Ограничивает ширину всего блока с сертификатом */
+  margin: 0 auto; /* Центрирует этот блок на странице */
+}
+/* Секция с сертификатом */
+.certificate-section {
+  padding: 40px 0; /* Отступы сверху и снизу */
+  text-align: center; /* Центрируем всё по горизонтали */
+  background-color: #f9f9f9; /* Светлый фон, чтобы картинка выделялась (опционально) */
+  border-radius: 12px;
+  margin: 30px 0; /* Отступ от соседних блоков */
+}
+
+/* Заголовок */
+.certificate-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Сама картинка сертификата */
+.certificate-image {
+  max-width: 800px; /* Это ограничит ширину картинки. Можно поставить 500px или 800px */
+  width: 100%; /* Это для телефонов: если экран меньше 600px, картинка сожмется до ширины экрана */
+  height: auto; /* Высота подстроится автоматически, чтобы не исказить пропорции */
+
+  /* Остальные стили (скругление, тень) оставляем как есть */
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+  display: block; /* Чтобы отступы работали корректно */
+  margin-left: auto; /* Эти два свойства центрируют картинку по горизонтали */
+  margin-right: auto;
+}
+
+/* Кнопка скачать */
+.btn-download-cert {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #e67e22; /* Цвет логотипа КранРемСервис */
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+.btn-download-cert:hover {
+  background-color: #d35400; /* Темнее при наведении */
+  transform: translateY(-2px); /* Легкое всплытие при наведении */
 }
 
 /* =========================================
@@ -231,7 +309,7 @@ ul {
    УСЛУГИ И СЕКЦИИ
    ========================================= */
 section {
-  padding: 80px 0;
+  padding: 110px 0;
 }
 
 .services,
@@ -316,6 +394,9 @@ h2 {
 }
 
 /* О компании */
+.about {
+  padding: 150px;
+}
 .about p {
   font-size: 18px;
   margin-bottom: 20px;
@@ -370,16 +451,104 @@ form textarea {
   display: flex;
   gap: 40px;
   padding: 50px 20px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   align-items: stretch;
 }
 
+/* Блок формы */
+.contact-form {
+  padding: 50px 0;
+  background-color: #f9fafc;
+}
+
+.form-box {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Расстояние между инпутами */
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Инпуты и текстареа */
+.form-box input,
+.form-box textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  background-color: #f8f9fa;
+  transition: 0.3s;
+}
+
+.form-box input:focus,
+.form-box textarea:focus {
+  outline: none;
+  border-color: #e67e22; /* Оранжевый цвет при нажатии */
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+}
+
+.form-box textarea {
+  resize: vertical; /* Позволяет растягивать поле вниз */
+  min-height: 100px;
+}
+
+/* Кнопка отправки */
+.btn-primary {
+  background-color: #e67e22;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #d35400; /* Темнее при наведении */
+  transform: translateY(-2px);
+}
+
+/* Если кнопка заблокирована при отправке */
+.btn-primary:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
 /* Левая часть: Текст */
 .footer-text-block {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-top: 30px;
+  gap: 40px;
+}
+
+.social-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  cursor: pointer; /* Рука при наведении */
+  transition: transform 0.3s ease; /* Плавная анимация */
+}
+
+.social-icon:hover {
+  transform: scale(1.1); /* Увеличение при наведении */
 }
 
 .text-section h3 {
@@ -428,8 +597,9 @@ form textarea {
 /* Правая часть: Карта */
 .footer-map-block {
   flex: 1;
-  min-height: 250px;
-  max-height: 300px;
+  min-height: 500px;
+  max-height: 700px;
+  border: 2px solid yellow;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -448,6 +618,158 @@ form textarea {
   color: #7f8c8d;
 }
 
+.services-section {
+  padding: 40px 0 60px;
+  background-color: #fff;
+}
+
+.services-section .section-title {
+  text-align: center;
+  font-size: 32px;
+  color: #1a2b4c;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.services-section .section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #e67e22;
+  margin: 10px auto 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Две колонки */
+  gap: 25px;
+}
+
+.service-card {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px 30px;
+  border-left: 4px solid #e67e22; /* Оранжевая полоска слева */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.service-card h3 {
+  font-size: 20px;
+  color: #1a2b4c;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.service-card h3 span {
+  color: #e67e22; /* Оранжевый номер */
+  font-weight: bold;
+}
+
+.service-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.service-card ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+.service-card ul li::before {
+  content: "•";
+  color: #e67e22;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* Одна колонка на телефоне */
+  }
+}
+/* ============================================= */
+
+.company-description {
+  padding: 60px 0;
+  background-color: #f9fafc; /* Очень светлый, благородный фон */
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+.company-description .content-block {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.company-description .section-title {
+  text-align: center;
+  font-size: 34px;
+  color: #1a2b4c;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Декоративная оранжевая линия под заголовком */
+.company-description .section-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background-color: #e67e22; /* Твой оранжевый цвет */
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.company-description h3 {
+  color: #1a2b4c;
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.company-description p {
+  font-size: 17px;
+  line-height: 1.8; /* Делает текст более читаемым и "воздушным" */
+  color: #444;
+  margin-bottom: 18px;
+}
+
+.company-description .accent-text {
+  color: #e67e22; /* Оранжевый цвет для особого выделения */
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .company-description {
+    padding: 30px 0;
+  }
+  .company-description .section-title {
+    font-size: 26px;
+  }
+  .company-description p {
+    font-size: 16px;
+  }
+}
 /* =========================================
    АНИМАЦИИ ИКОНОК
    ========================================= */
