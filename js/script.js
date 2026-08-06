@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // =========================================
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("requestForm");
-  if (!form) return;
+  if (!form) return; // ЭТА СТРОЧКА ОЧЕНЬ ВАЖНА!
 
   // 👇 КОГДА ПОЛУЧИШЬ КЛЮЧ, ЗАМЕНИ ЭТУ СТРОКУ
   const FORM_URL = "https://api.web3forms.com/submit";
@@ -145,24 +145,63 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =========================================
-// 6. ЭФФЕКТ ИСКР НА КНОПКАХ (ВЫПЕНДРЕЖ)
+// 8. АВТОМАТИЧЕСКИЙ СЛАЙДЕР ФОТО
 // =========================================
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".btn-primary").forEach((btn) => {
-    btn.addEventListener("mouseenter", (e) => {
-      for (let i = 0; i < 20; i++) {
-        const spark = document.createElement("div");
-        spark.className = "spark";
-        const x = (Math.random() - 0.5) * 100;
-        const y = (Math.random() - 0.5) * 100;
-        spark.style.setProperty("--x", x + "%");
-        spark.style.setProperty("--y", y + "%");
-        spark.style.background = ["#e67e22", "#f1c40f", "#d35400"][
-          Math.floor(Math.random() * 3)
-        ];
-        btn.appendChild(spark);
-        setTimeout(() => spark.remove(), 800);
-      }
-    });
+  const slides = document.querySelectorAll(".slide");
+  const nextBtn = document.querySelector(".next-btn");
+  const prevBtn = document.querySelector(".prev-btn");
+  let currentSlide = 0;
+  let slideInterval;
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  }
+
+  // Запуск автоматической смены каждые 4 секунды
+  function startSlider() {
+    slideInterval = setInterval(nextSlide, 4000);
+  }
+
+  // Остановка при наведении мыши (чтобы пользователь мог прочитать)
+  const sliderWrapper = document.querySelector(".photo-slider-wrapper");
+  sliderWrapper.addEventListener("mouseenter", () =>
+    clearInterval(slideInterval),
+  );
+  sliderWrapper.addEventListener("mouseleave", startSlider);
+
+  // Слушатели на кнопки
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    clearInterval(slideInterval);
+    startSlider();
   });
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    clearInterval(slideInterval);
+    startSlider();
+  });
+
+  startSlider(); // Запускаем при загрузке
 });
+
+// =========================================
+// ФУНКЦИЯ ДЛЯ ЦЕНТРАЛЬНОЙ КНОПКИ
+// =========================================
+function scrollToForm() {
+  const formSection = document.getElementById("application");
+  if (formSection) {
+    formSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
