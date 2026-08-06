@@ -67,6 +67,7 @@
               class="logo-img"
               src="images/crane-repair-service.webp"
               alt="ООО КранРемСервис - ремонт кранов"
+              loading="lazy"
             />
             <span class="logo-text">
               Кран<span class="logo-accent">Рем</span>Сервис
@@ -88,16 +89,67 @@
 
     <!-- Главный баннер -->
     <section id="index" class="hero">
-      <div class="slider">
-        <h1 class="cyber-title-main">
-          Профессиональный ремонт грузоподъемного оборудования
-        </h1>
-        <p class="slider-hero">
-          Ремонт мостовых, козловых кранов и кран-балок по всей Беларуси
-        </p>
-        <button class="btn-primary" onclick="scrollToForm()">
-          Оставить заявку
-        </button>
+      <div class="hero-split-container">
+        <!-- ЛЕВАЯ ЧАСТЬ (70%): Видео с затемнением -->
+        <div class="hero-media video-wrapper">
+          <!-- ЗАМЕНИТЕ ССЫЛКУ НА ВАШЕ ВИДЕО -->
+          <video autoplay loop muted playsinline class="bg-video">
+            <source src="video/Video Project 22.mp4" type="video/mp4" />
+          </video>
+          <!-- Затемняющий слой, чтобы текст был читаемым поверх видео -->
+          <div class="video-overlay"></div>
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ (30%): Слайдер фото -->
+        <!-- ПРАВАЯ ЧАСТЬ (30%): Слайдер фото -->
+        <div class="hero-media photo-slider-wrapper">
+          <div class="photo-slider" id="photoSlider">
+            <div
+              class="slide active"
+              style="background-image: url(&quot;images/kr-1.webp&quot;)"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url(&quot;images/kr-2.webp&quot;)"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url(&quot;images/kr-3.webp&quot;)"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url(&quot;images/kr-4.webp&quot;)"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url(&quot;images/kr-5.webp&quot;)"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url(&quot;images/kr-6.webp&quot;)"
+            ></div>
+            <div
+              class="slide"
+              style="background-image: url(&quot;images/kr-7.webp&quot;)"
+            ></div>
+          </div>
+          <!-- Кнопки управления слайдером -->
+          <button class="slider-btn prev-btn">❮</button>
+          <button class="slider-btn next-btn">❯</button>
+        </div>
+
+        <!-- ЦЕНТРАЛЬНЫЙ ТЕКСТ ПОВЕРХ ВСЕГО -->
+        <div class="hero-text-content">
+          <h1 class="cyber-title-main">
+            Профессиональный ремонт грузоподъемного оборудования
+          </h1>
+          <p class="slider-hero">
+            Ремонт мостовых, козловых кранов и кран-балок по всей Беларуси
+          </p>
+          <button class="btn-primary" onclick="scrollToForm()">
+            Оставить заявку
+          </button>
+        </div>
       </div>
     </section>
 
@@ -121,11 +173,12 @@
             консольных кранов различных модификаций, а также кран-балок, талей,
             подкрановых путей и эстакад.
           </p>
-
-          <h3 class="company-card">
-            Наша главная ценность — качество и безопасность
-          </h3>
-          <p class="company-text">
+        </div>
+        <h3 class="company-card">
+          Наша главная ценность — качество и безопасность
+        </h3>
+        <div class="content-block">
+          <p class="about-company">
             В организации создана профессиональная
             <strong>Служба сервисного обслуживания</strong>. В её функции входит
             предоставление всего комплекса услуг, связанных с поддержанием
@@ -163,6 +216,7 @@
     </section>
 
     <!-- Услуги -->
+    <!-- Услуги -->
     <section class="services-section" id="services">
       <div class="container">
         <h2 class="section-title">Наши услуги</h2>
@@ -171,8 +225,10 @@
           <!-- 1. Комплексный ремонт -->
           <div class="service-card">
             <h3 class="company-card">
-              <span class="company-service">1.</span> Ремонт и модернизация
-              кранов
+              <span class="company-service">1.</span
+              ><span class="company-title-text">
+                Ремонт и модернизация кранов</span
+              >
             </h3>
             <ul class="service-unordered">
               <li class="service-list">
@@ -193,19 +249,19 @@
               <li class="service-list">
                 Ремонт и замена электрооборудования, ремонт кран-балок.
               </li>
-              <li>
-                <strong>Модернизация:</strong> Перевод крана на радиоуправление
-                с пола, установка частотных преобразователей, устройств плавного
-                пуска и современных приборов безопасности.
-              </li>
             </ul>
+            <strong>Модернизация:</strong> Перевод крана на радиоуправление с
+            пола, установка частотных преобразователей, устройств плавного пуска
+            и современных приборов безопасности.
           </div>
 
           <!-- 2. Обслуживание и ТО -->
           <div class="service-card">
             <h3 class="company-card">
-              <span class="company-service">2.</span> Техническое обслуживание
-              (ТО)
+              <span class="company-service">2.</span>
+              <span class="company-title-text"
+                >Техническое обслуживание (ТО)</span
+              >
             </h3>
             <ul class="service-unordered">
               <li class="service-list">
@@ -226,15 +282,7 @@
               </li>
               <li class="service-list">Обслуживание монорельсов.</li>
             </ul>
-            <p
-              class="company-text"
-              style="
-                margin-top: 10px;
-                font-size: 15px;
-                color: #666;
-                font-style: italic;
-              "
-            >
+            <p class="company-text">
               * Техническое обслуживание — важная составляющая безопасной и
               эффективной работы оборудования.
             </p>
@@ -243,8 +291,10 @@
           <!-- 3. Подкрановые пути -->
           <div class="service-card">
             <h3 class="company-card">
-              <span class="company-service">3.</span> Ремонт и обслуживание
-              подкрановых путей
+              <span class="company-service">3.</span>
+              <span class="company-title-text"
+                >Ремонт и обслуживание подкрановых путей</span
+              >
             </h3>
             <ul class="service-unordered">
               <li class="service-list">
@@ -265,8 +315,10 @@
           <!-- 4. Покраска и поставка -->
           <div class="service-card">
             <h3 class="company-card">
-              <span class="company-service">4.</span> Покраска и поставка
-              оборудования
+              <span class="company-service">4.</span
+              ><span class="company-title-text"
+                >Покраска и поставка оборудования</span
+              >
             </h3>
             <ul class="service-unordered">
               <li class="service-list">
@@ -287,6 +339,7 @@
         </div>
       </div>
     </section>
+
     <!-- Форма заявки -->
     <section id="application" class="contact-form">
       <div class="container">
@@ -369,6 +422,7 @@
                 src="images/telegramm.webp"
                 class="social-icon"
                 alt="Telegram"
+                loading="lazy"
               />
             </a>
             <a
@@ -376,7 +430,12 @@
               class="viber"
               target="_blank"
             >
-              <img src="images/viber.webp" class="social-icon" alt="Viber" />
+              <img
+                src="images/viber.webp"
+                class="social-icon"
+                alt="Viber"
+                loading="lazy"
+              />
             </a>
             <a
               href="https://wa.me/+375292941830"
@@ -387,6 +446,7 @@
                 src="images/whatsapp.webp"
                 class="social-icon"
                 alt="WhatsApp"
+                loading="lazy"
               />
             </a>
           </div>

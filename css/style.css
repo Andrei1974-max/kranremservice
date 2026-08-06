@@ -88,7 +88,12 @@ h3.company-card {
   align-items: baseline;
   justify-content: center;
   color: var(--color-black);
-  gap: 10px;
+  gap: 0.625rem; /* 10px в rem */
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  margin-bottom: 0.9375rem;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
 }
 
 /* Особенности для company-section (белый цвет и подчеркивание) */
@@ -96,7 +101,7 @@ h3.company-section {
   color: var(--color-white);
   border-bottom: 2px solid var(--color-accent);
   display: inline-block;
-  padding-bottom: 5px;
+  padding-bottom: 0.3125rem; /* 5px перевели в rem */
 }
 
 /* ===============   p   ====================== */
@@ -106,18 +111,23 @@ h3.company-section {
    ========================================= */
 
 /* --- БАЗОВЫЙ ТЕКСТ (по умолчанию) --- */
+/* =========================================
+   ЕДИНАЯ СИСТЕМА ДЛЯ ВСЕХ P
+   ========================================= */
+
+/* --- БАЗОВЫЙ ТЕКСТ (по умолчанию) --- */
 p {
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.1vw, 1rem); /* от 14px до 16px */
   line-height: 1.6;
   color: var(--color-dark-gray);
-  margin-bottom: 15px;
+  margin-bottom: clamp(0.75rem, 1vw, 0.9375rem); /* от 12px до 15px */
 }
 
 /* --- 1. Текст "О компании" (основной контент) --- */
 p.about-company {
-  font-size: 16px; /* ← было 19px → стало 16px */
+  font-size: clamp(0.9375rem, 1.1vw, 1.0625rem); /* от 15px до 17px */
   line-height: 1.8;
-  margin-bottom: 20px;
+  margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem); /* от 12px до 20px */
   text-align: left;
   max-width: 800px;
   margin-left: auto;
@@ -127,8 +137,8 @@ p.about-company {
 
 /* --- 2. Текст в Hero (акцентный) --- */
 p.slider-hero {
-  font-size: 18px; /* ← было 19px → стало 18px */
-  margin-bottom: 40px;
+  font-size: clamp(1rem, 1.5vw, 1.25rem); /* от 16px до 20px */
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem); /* от 24px до 40px */
   opacity: 0.9;
   max-width: 800px;
   margin-left: auto;
@@ -139,8 +149,8 @@ p.slider-hero {
 
 /* --- 3. Реквизиты в футере (мелкий текст) --- */
 p.company-details {
-  margin-bottom: 6px;
-  font-size: 14px; /* ← оставляем 14px */
+  margin-bottom: 0.375rem; /* 6px (фиксированный, слишком мелкий для изменения) */
+  font-size: clamp(0.75rem, 1vw, 0.875rem); /* от 12px до 14px */
   color: var(--color-white);
   line-height: 1.4;
 }
@@ -148,86 +158,83 @@ p.company-details {
 /* --- 4. Акцентный текст (жирный курсив) --- */
 p.company-text {
   text-align: center;
-  color: #ffffff; /* Было #555, меняем на белый */
-  margin-bottom: 30px;
-  margin-top: 10px;
+  color: #ffffff;
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem); /* от 24px до 32px */
+  margin-top: 0.625rem; /* 10px фиксированный */
   font-weight: bold;
-  font-size: 16px;
+  font-size: clamp(0.875rem, 1.1vw, 1rem); /* от 14px до 16px */
   font-style: italic;
 }
 
 /* --- 5. Копирайт в футере (самый мелкий) --- */
 p.footer-copy-text {
-  font-size: 14px; /* ← оставляем 14px */
+  font-size: clamp(0.75rem, 0.8vw, 0.875rem); /* от 12px до 14px */
   text-align: center;
   color: #7f8c8d;
   line-height: 1.6;
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 0.9375rem; /* 15px перевели в rem */
 }
 
 /* ==================  span    ================================ */
+/* --- Цифры в услугах (1., 2., 3., 4.) --- */
 span.company-service {
   color: var(--color-accent);
   font-weight: bold;
-  font-size: 20px;
-  min-width: 40px; /* ← чтобы все цифры были одной ширины */
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem); /* от 18px до 22px */
+  min-width: 2.5rem; /* 40px перевели в rem */
   text-align: right;
 }
 
+/* --- Текст заголовка в услугах (рядом с цифрой) --- */
 span.company-title-text {
-  font-size: 20px;
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem); /* от 18px до 22px */
   font-weight: 700;
   color: var(--color-black);
 }
 
+/* --- Логотип в шапке (Кран Рем Сервис) --- */
 span.logo-text {
-  font-size: 18px;
+  font-size: clamp(1.125rem, 1.3vw, 1.375rem); /* от 18px до 22px */
   font-weight: 800 !important;
   color: var(--color-black);
   white-space: nowrap;
-  letter-spacing: 1px;
-  padding: 10px;
+  letter-spacing: clamp(0.5px, 0.05vw, 1px); /* От 0.5px до 1px (адаптивный) */
+  padding: 0.625rem; /* 10px перевели в rem */
   border-radius: 4px;
   transition: 0.25s ease;
 }
 
+/* --- Акцент в логотипе (Рем) --- */
 span.logo-accent {
-  font-size: 20px;
+  font-size: clamp(1.125rem, 1.3vw, 1.375rem); /* от 18px до 22px */
   color: var(--color-accent);
-}
-
-span.logo-text {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--color-black);
-  white-space: nowrap;
-  letter-spacing: 0.5px;
 }
 /* =======================  ul   ================================== */
 
 ul.service-unordered {
   position: relative;
-  /* list-style: none; */
   padding: 0;
   margin: 0;
 }
 
 /* ========================   li   ================================ */
 
+/* --- Список в футере (Контакты) --- */
 li.info-list {
-  margin-bottom: 10px;
-  font-size: 15px;
+  margin-bottom: 0.625rem; /* 10px перевели в rem */
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem); /* от 13px до 15px */
   line-height: 1.4;
   color: var(--color-white);
 }
 
+/* --- Список в услугах --- */
 li.service-list {
-  padding: 8px 0 8px 25px;
+  padding: 0.5rem 0 0.5rem 1.5625rem; /* 8px и 25px перевели в rem */
   color: #555;
-  font-size: 15px;
-  margin-bottom: 8px;
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem); /* от 13px до 15px */
+  margin-bottom: 0.5rem; /* 8px перевели в rem */
   line-height: 1.5;
 }
 
@@ -250,6 +257,9 @@ a {
 /* =========================================
    ШАПКА И НАВИГАЦИЯ
    ========================================= */
+/* =========================================
+   ШАПКА И НАВИГАЦИЯ
+   ========================================= */
 .main-header {
   display: flex;
   align-items: center;
@@ -259,7 +269,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 1000;
-  height: 70px; /* Фиксируем высоту шапки для стабильности */
+  height: 4.375rem; /* 70px → 4.375rem */
   box-shadow: 0 4px 20px var(--color-dark);
 }
 
@@ -269,7 +279,7 @@ a {
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  padding: 0 20px;
+  padding: 0 1.25rem; /* 20px → 1.25rem */
   position: relative;
 }
 
@@ -277,13 +287,13 @@ a {
 .header__logo {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: clamp(0.625rem, 1.5vw, 0.9375rem); /* от 10px до 15px */
   z-index: 10;
 }
 
 .logo-img {
   border-radius: 50px;
-  height: 69px;
+  height: 4.3125rem; /* 69px → 4.3125rem */
   width: auto;
   display: block;
 }
@@ -299,35 +309,32 @@ a {
   white-space: nowrap;
 }
 
-/* Стиль для активного пункта меню (на который нажали) */
 /* Базовый стиль ссылки */
 .nav-item {
   position: relative;
-  color: var(--color-dark); /* Черный по умолчанию */
+  color: var(--color-dark);
   font-weight: 600;
-  font-size: 15px;
-  padding: 8px 0;
+  font-size: clamp(0.8125rem, 1vw, 0.9375rem); /* от 13px до 15px */
+  padding: 0.5rem 0; /* 8px → 0.5rem */
   transition: color 0.3s ease;
 }
 
-/* Стиль при наведении (курсор наведен) */
+/* Наведение */
 .nav-item:hover {
-  color: var(--color-blue); /* Синий при наведении */
+  color: var(--color-blue);
 }
 
-/* Стиль АКТИВНОЙ ссылки (на которой мы находимся) */
-/* Стиль АКТИВНОЙ ссылки (на которой мы находимся) */
+/* АКТИВНАЯ ссылка */
 .nav-item.active {
-  color: var(--color-accent) !important; /* Стало оранжевым (#f5a623) */
-  border-bottom: 2px solid var(--color-accent); /* Оранжевая полоска снизу */
+  color: var(--color-accent) !important;
+  border-bottom: 2px solid var(--color-accent);
 }
 
-/* Защита: если навели курсор на УЖЕ активную ссылку, она не должна менять цвет */
 .nav-item.active:hover {
   color: var(--color-blue) !important;
 }
 
-/* Анимация бегущей рамки для пунктов меню */
+/* Анимация бегущей рамки */
 .nav-item::before,
 .nav-item::after {
   content: "";
@@ -352,16 +359,16 @@ a {
   width: 100%;
 }
 
-/* Кнопка заявки */
+/* Кнопка заявки (БЕЗ ИЗМЕНЕНИЯ ЛОГИКИ ПОЗИЦИОНИРОВАНИЯ) */
 .btn-sales {
   position: absolute;
-  left: 750px;
+  left: 46.875rem; /* 750px → 46.875rem (точный перевод, кнопка останется на месте) */
   background-color: var(--color-blue);
   color: var(--color-white) !important;
-  padding: 10px 24px;
+  padding: 0.625rem 1.5rem; /* 10px 24px → 0.625rem 1.5rem */
   border-radius: 4px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: clamp(0.75rem, 0.8vw, 0.875rem); /* от 12px до 14px */
   white-space: nowrap;
   transition: all 0.3s ease;
   z-index: 10;
@@ -379,11 +386,10 @@ a {
   display: none;
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 1.5rem; /* 24px → 1.5rem */
   cursor: pointer;
   z-index: 1001;
 }
-
 /* =========================================
    ГЛАВНЫЙ ЭКРАН (HERO)
    ========================================= */
@@ -406,18 +412,20 @@ a {
   background-color: var(--color-accent); /* Основной цвет - золотой */
   color: var(--color-white);
   border: none;
-  font-size: 18px;
+  font-size: clamp(0.875rem, 1.4vw, 1.125rem); /* от 14px до 18px */
   font-weight: 700;
   cursor: pointer;
   border-radius: 8px;
-  transition: all 0.3s ease; /* Плавность */
+  transition: all 0.3s ease;
   display: inline-block;
   text-align: center;
   position: relative;
   overflow: hidden;
+  padding: 0.75rem 1.5rem; /* 12px 24px → перевели в rem (базовый размер) */
 }
 
 /* Наведение (общее для всех) */
+/* Наведение на кнопку (общее) */
 .btn-primary:hover {
   background-color: #d48c16; /* Темно-золотой при наведении */
   transform: translateY(-3px);
@@ -426,13 +434,13 @@ a {
 
 /* Отдельные отступы для кнопки в БАННЕРЕ */
 .hero .btn-primary {
-  padding: 16px 40px;
+  padding: 1rem 2.5rem; /* 16px → 1rem, 40px → 2.5rem */
 }
 
 /* Отдельные отступы для кнопки в ФОРМЕ */
 .form-box .btn-primary {
-  padding: 15px;
-  margin-top: 10px;
+  padding: 0.9375rem; /* 15px → 0.9375rem */
+  margin-top: 0.625rem; /* 10px → 0.625rem */
   width: 100%;
 }
 
@@ -440,7 +448,7 @@ a {
    УСЛУГИ И СЕКЦИИ
    ========================================= */
 section {
-  padding: 110px 0;
+  padding: 6.875rem 0; /* 110px → 6.875rem */
 }
 
 .services,
@@ -458,12 +466,12 @@ section {
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  gap: 1.875rem; /* 30px → 1.875rem */
 }
 
 .service-card {
   background: var(--color-white);
-  padding: 30px;
+  padding: 1.875rem; /* 30px → 1.875rem */
   border-radius: 10px;
   box-shadow: 0 5px 15px var(--color-black);
   transition: transform 0.3s;
@@ -473,17 +481,9 @@ section {
   transform: translateY(-5px);
 }
 
-/* .service-card li:before {
-  content: "✓";
-  position: absolute;
-  left: 0;
-  color: #27ae60;
-  font-weight: bold;
-} */
-
 /* О компании */
 .about {
-  padding: 150px;
+  padding: 9.375rem; /* 150px → 9.375rem */
 }
 
 /* Форма */
@@ -492,16 +492,16 @@ form {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.9375rem; /* 15px → 0.9375rem */
 }
 
 form input,
 form textarea {
   width: 100%;
-  padding: 15px;
+  padding: 0.9375rem; /* 15px → 0.9375rem */
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem; /* 16px → 1rem */
   font-family: inherit;
 }
 
@@ -512,15 +512,14 @@ form textarea {
 
 #successMessage {
   text-align: center;
-  margin-top: 20px;
-  font-size: 18px;
+  margin-top: 1.25rem; /* 20px → 1.25rem */
+  font-size: 1.125rem; /* 18px → 1.125rem */
   display: none;
 }
 
 /* =========================================
-   ФУТЕР (КОМПАКТНЫЙ ВАРИАНТ)
+   ФУТЕР
    ========================================= */
-
 .footer {
   background: #2c3e50;
   color: #ecf0f1;
@@ -531,8 +530,8 @@ form textarea {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: stretch;
-  gap: 60px;
-  padding: 30px;
+  gap: 3.75rem; /* 60px → 3.75rem */
+  padding: 1.875rem; /* 30px → 1.875rem */
   max-width: 1450px;
   margin: 0 auto;
 }
@@ -546,7 +545,7 @@ form textarea {
 
 /* Блок формы */
 .contact-form {
-  padding: 50px 0;
+  padding: 3.125rem 0; /* 50px → 3.125rem */
   background-color: #f9fafc;
 }
 
@@ -555,23 +554,21 @@ form textarea {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.9375rem; /* 15px → 0.9375rem */
   background: var(--color-white);
-  padding: 40px;
+  padding: 2.5rem; /* 40px → 2.5rem */
   border-radius: 12px;
-
-  /* ДОБАВЬТЕ ЭТО: */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Глубокую тень, как у "парящей" карточки */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 /* Инпуты и текстареа */
 .form-box input,
 .form-box textarea {
   width: 100%;
-  padding: 15px;
+  padding: 0.9375rem; /* 15px → 0.9375rem */
   border: 1px solid #ddd;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem; /* 16px → 1rem */
   font-family: inherit;
   background-color: #f8f9fa;
   transition: 0.3s;
@@ -580,48 +577,46 @@ form textarea {
 .form-box input:focus,
 .form-box textarea:focus {
   outline: none;
-  border-color: #e67e22; /* Оранжевый цвет при нажатии */
+  border-color: #e67e22;
   background-color: #fff;
   box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
 }
 
 .form-box textarea {
-  resize: vertical; /* Позволяет растягивать поле вниз */
+  resize: vertical;
   min-height: 100px;
 }
 
-/* Если кнопка заблокирована при отправке */
 .btn-primary:disabled {
   background-color: var(--color-gray);
   cursor: not-allowed;
   transform: none;
 }
-/* Левая часть: Текст */
 
+/* Социальные сети */
 .social {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-top: 30px;
-  gap: 40px;
+  padding-top: 1.875rem; /* 30px → 1.875rem */
+  gap: 2.5rem; /* 40px → 2.5rem */
 }
 
 .social-icon {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem; /* 30px → 1.875rem */
+  height: 1.875rem;
   border-radius: 50px;
-  cursor: pointer; /* Рука при наведении */
-  transition: transform 0.3s ease; /* Плавная анимация */
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .social-icon:hover {
-  transform: scale(1.1); /* Увеличение при наведении */
+  transform: scale(1.1);
 }
 
 .requisites-section {
-  margin-top: 25px;
-  padding-top: 20px;
-  /* padding-bottom: 10px; */
+  margin-top: 1.5625rem; /* 25px → 1.5625rem */
+  padding-top: 1.25rem; /* 20px → 1.25rem */
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -644,28 +639,28 @@ form textarea {
 
 .copyright-bar {
   background: #1a252f;
-  padding: 15px 0;
+  padding: 0.9375rem 0; /* 15px → 0.9375rem */
   text-align: center;
-  font-size: 13px;
+  font-size: 0.8125rem; /* 13px → 0.8125rem */
   color: #7f8c8d;
 }
 
 .services-section {
-  padding: 40px 0 60px;
+  padding: 2.5rem 0 3.75rem; /* 40px 0 60px → 2.5rem 0 3.75rem */
   background-color: var(--color-white);
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Две колонки */
-  gap: 25px;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5625rem; /* 25px → 1.5625rem */
 }
 
 .service-card {
   background-color: #f8f9fa;
   border-radius: 12px;
-  padding: 25px 30px;
-  border-left: 4px solid var(--color-accent); /* Оранжевая полоска слева */
+  padding: 1.5625rem 1.875rem; /* 25px 30px → 1.5625rem 1.875rem */
+  border-left: 4px solid var(--color-accent);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -676,57 +671,52 @@ form textarea {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* ============================================= */
-
 .company-description {
-  padding: 60px 0;
-  background-color: var(--color-light-bg); /* Очень светлый, благородный фон */
+  padding: 3.75rem 0; /* 60px → 3.75rem */
+  background-color: var(--color-light-bg);
   border-radius: 20px;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem; /* 40px → 2.5rem */
 }
 
 .company-description .content-block {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.25rem; /* 20px → 1.25rem */
 }
 
 .company-description .section-title {
   text-align: center;
-  font-size: 34px;
+  font-size: 2.125rem; /* 34px → 2.125rem */
   color: #1a2b4c;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem; /* 40px → 2.5rem */
   position: relative;
 }
 
 .company-description .accent-text {
-  color: var(--color-accent); /* Оранжевый цвет для особого выделения */
+  color: var(--color-accent);
   font-weight: bold;
-  font-size: 18px;
+  font-size: 1.125rem; /* 18px → 1.125rem */
 }
 
-/* ============================================================== */
-/* ================  слайдер  ================================== */
-
-/* НОВЫЙ КОНТЕЙНЕР ДЛЯ СПЛИТ-ЭКРАНА */
+/* =========================================
+   СЛАЙДЕР
+   ========================================= */
 .hero-split-container {
   position: relative;
-  height: 630px;
+  height: 39.375rem; /* 630px → 39.375rem */
   max-height: 700px;
   width: 100%;
   display: grid;
-  grid-template-columns: 70% 30%; /* 70% видео, 30% фото */
+  grid-template-columns: 70% 30%;
   overflow: hidden;
 }
 
-/* ОБЩИЕ НАСТРОЙКИ ДЛЯ БЛОКОВ (ВИДЕО И ФОТО) */
 .hero-media {
   position: relative;
   height: 100%;
   overflow: hidden;
 }
 
-/* --- ЛЕВАЯ ЧАСТЬ (ВИДЕО) --- */
 .bg-video {
   position: absolute;
   top: 50%;
@@ -736,38 +726,40 @@ form textarea {
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
+
 .video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* Затемнение 50% */
+  background: rgba(0, 0, 0, 0.5);
   z-index: 2;
 }
 
-/* --- ПРАВАЯ ЧАСТЬ (СЛАЙДЕР ФОТО) --- */
 .photo-slider-wrapper {
   position: relative;
   background-color: #1a1a1a;
 }
+
 .photo-slider {
   width: 100%;
   height: 100%;
   position: relative;
 }
+
 .slide {
   position: absolute;
   inset: 0;
   opacity: 0;
   background-size: cover;
   background-position: center;
-  transition: opacity 1s ease-in-out; /* Плавное перетекание */
+  transition: opacity 1s ease-in-out;
   z-index: 1;
 }
+
 .slide.active {
   opacity: 1;
   z-index: 2;
 }
 
-/* КНОПКИ УПРАВЛЕНИЯ ФОТО */
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -776,25 +768,26 @@ form textarea {
   background: rgba(255, 255, 255, 0.3);
   color: white;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem; /* 40px → 2.5rem */
+  height: 2.5rem;
   border-radius: 50%;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.25rem; /* 20px → 1.25rem */
   transition: 0.3s;
 }
+
 .slider-btn:hover {
   background: rgba(255, 255, 255, 0.7);
   color: black;
 }
+
 .prev-btn {
-  left: 10px;
+  left: 0.625rem; /* 10px → 0.625rem */
 }
 .next-btn {
-  right: 10px;
+  right: 0.625rem;
 }
 
-/* ТЕКСТ ПОВЕРХ СЛАЙДЕРА */
 .hero-text-content {
   position: absolute;
   inset: 0;
@@ -804,20 +797,22 @@ form textarea {
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 50px;
-  padding-bottom: 200px;
-  pointer-events: none; /* Текст не перехватывает клики */
+  gap: 3.125rem; /* 50px → 3.125rem */
+  padding-bottom: 12.5rem; /* 200px → 12.5rem */
+  pointer-events: none;
 }
+
 .hero-text-content * {
-  pointer-events: auto; /* Но кнопка кликабельна */
+  pointer-events: auto;
 }
+
 /* =========================================
    АНИМАЦИИ ИКОНОК
    ========================================= */
 .social {
   display: flex;
-  gap: 45px;
-  margin-top: 20px;
+  gap: 2.8125rem; /* 45px → 2.8125rem */
+  margin-top: 1.25rem; /* 20px → 1.25rem */
 }
 
 .telegram:hover {
@@ -830,27 +825,13 @@ form textarea {
   animation: pulse-vb 0.7s infinite;
 }
 
-.telegram {
-  animation: pulse-wa 1.7s infinite ease-in-out;
-  display: inline-block;
-  border-radius: 50%;
-  padding: 5px 5px 1px 5px;
-  background: var(--color-white);
-}
-
-.viber {
-  animation: pulse-wa 1.7s infinite ease-in-out;
-  display: inline-block;
-  border-radius: 50%;
-  padding: 5px 5px 1px 5px;
-  background: var(--color-white);
-}
-
+.telegram,
+.viber,
 .whatsapp {
   animation: pulse-wa 1.7s infinite ease-in-out;
   display: inline-block;
   border-radius: 50%;
-  padding: 5px 5px 1px 5px;
+  padding: 0.3125rem 0.3125rem 0.0625rem 0.3125rem; /* 5px 5px 1px 5px → rem */
   background: var(--color-white);
 }
 
@@ -900,14 +881,11 @@ form textarea {
 }
 
 /* =========================================
-   АДАПТИВНОСТЬ
+   АДАПТИВНОСТЬ (ОСТАВЛЯЕМ БЕЗ ИЗМЕНЕНИЙ)
    ========================================= */
 
 @media (max-width: 992px) {
   .nav-links {
-    /* Убираем display: none, чтобы анимация работала */
-    /* display: none; <-- УДАЛИТЕ ЭТУ СТРОКУ */
-
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -920,8 +898,6 @@ form textarea {
     gap: 20px;
     z-index: 999;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-    /* === ДОБАВЛЯЕМ ЭТИ СТРОКИ ДЛЯ ПЛАВНОСТИ === */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -963,7 +939,7 @@ form textarea {
 
 @media (max-width: 768px) {
   .services-grid {
-    grid-template-columns: 1fr; /* Одна колонка на телефоне */
+    grid-template-columns: 1fr;
   }
   .company-description {
     padding: 30px 0;
@@ -977,14 +953,12 @@ form textarea {
   .hero {
     padding: 60px 0;
   }
-}
 
-/* МОБИЛЬНАЯ АДАПТАЦИЯ СЛАЙДЕРА */
-@media (max-width: 768px) {
   .hero-split-container {
-    grid-template-columns: 1fr; /* Ставим в одну колонку */
-    grid-template-rows: 50% 50%; /* Делим высоту пополам */
+    grid-template-columns: 1fr;
+    grid-template-rows: 50% 50%;
     height: 90vh;
+    max-height: 600px;
   }
 
   .hero-text-content h1 {
@@ -995,18 +969,11 @@ form textarea {
     height: 30px;
     font-size: 14px;
   }
-
-  .hero-split-container {
-    grid-template-columns: 1fr; /* Ставим в одну колонку */
-    grid-template-rows: 50% 50%;
-    height: 90vh; /* Высота 90% от экрана телефона */
-    max-height: 600px;
-  }
 }
 
 @media (max-width: 480px) {
   .hero-split-container {
     height: 100vh;
-    grid-template-rows: 40% 60%; /* Видео 40%, фото 60% */
+    grid-template-rows: 40% 60%;
   }
 }
