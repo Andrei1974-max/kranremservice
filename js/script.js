@@ -205,3 +205,24 @@ function scrollToForm() {
     formSection.scrollIntoView({ behavior: "smooth" });
   }
 }
+// =========================================
+// 9. ИСЧЕЗНОВЕНИЕ ЦЕНТРАЛЬНОЙ КНОПКИ ПРИ ОТКРЫТИИ МЕНЮ
+// =========================================
+document.addEventListener("DOMContentLoaded", function () {
+  const hamburger = document.getElementById("hamburger-btn");
+  const navLinks = document.querySelector(".nav-links");
+  const centerBtn = document.getElementById("center-btn");
+
+  if (hamburger && navLinks && centerBtn) {
+    hamburger.addEventListener("click", function () {
+      // Когда меню открывается или закрывается, проверяем его состояние
+      if (navLinks.classList.contains("open")) {
+        // Если меню открыто -> прячем центральную кнопку
+        centerBtn.style.display = "none";
+      } else {
+        // Если меню закрыто -> возвращаем центральную кнопку
+        centerBtn.style.display = "inline-block";
+      }
+    });
+  }
+});

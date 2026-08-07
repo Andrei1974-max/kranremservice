@@ -362,7 +362,11 @@ a {
 /* Кнопка заявки (БЕЗ ИЗМЕНЕНИЯ ЛОГИКИ ПОЗИЦИОНИРОВАНИЯ) */
 .btn-sales {
   position: absolute;
-  left: 46.875rem; /* 750px → 46.875rem (точный перевод, кнопка останется на месте) */
+  left: clamp(
+    20px,
+    47vw,
+    750px
+  ); /* 750px → 46.875rem (точный перевод, кнопка останется на месте) */
   background-color: var(--color-blue);
   color: var(--color-white) !important;
   padding: 0.625rem 1.5rem; /* 10px 24px → 0.625rem 1.5rem */
