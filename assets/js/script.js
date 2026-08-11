@@ -148,9 +148,13 @@ document.addEventListener("DOMContentLoaded", () => {
 // 8. АВТОМАТИЧЕСКИЙ СЛАЙДЕР ФОТО
 // =========================================
 document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll(".slide");
-  const nextBtn = document.querySelector(".next-btn");
-  const prevBtn = document.querySelector(".prev-btn");
+  const wrapper = document.querySelector(".photo-slider-wrapper");
+  const slider = document.getElementById("photoSlider");
+
+  const slides = slider.querySelectorAll(".slide"); // Ищем картинки внутри #photoSlider
+  const prevBtn = wrapper.querySelector(".prev-btn"); // Ищем кнопки внутри обертки
+  const nextBtn = wrapper.querySelector(".next-btn");
+
   let currentSlide = 0;
   let slideInterval;
 
@@ -175,11 +179,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Остановка при наведении мыши (чтобы пользователь мог прочитать)
-  const sliderWrapper = document.querySelector(".photo-slider-wrapper");
-  sliderWrapper.addEventListener("mouseenter", () =>
-    clearInterval(slideInterval),
-  );
-  sliderWrapper.addEventListener("mouseleave", startSlider);
+  // Когда мышь навели: просто остановить
+  wrapper.addEventListener("mouseenter", () => {
+    clearInterval(slideInterval);
+  });
+
+  // Когда мышь убрали: сбросить старый таймер и запустить заново
+  wrapper.addEventListener("mouseleave", () => {
+    clearInterval(slideInterval);
+    startSlider();
+  });
 
   // Слушатели на кнопки
   nextBtn.addEventListener("click", () => {
