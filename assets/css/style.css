@@ -339,10 +339,7 @@ section {
 .about {
   background: var(--color-light-bg);
 }
-.contact-form {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: var(--color-white);
-}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -402,6 +399,7 @@ form textarea {
   padding-right: 3rem;
   padding-bottom: 1rem;
   max-width: 1450px;
+  height: 100vh;
   margin: 0 auto;
 }
 .footer-text-block {
@@ -411,8 +409,10 @@ form textarea {
   justify-content: center;
 }
 .contact-form {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--color-white);
   padding: 3.125rem 0;
-  background-color: #f9fafc;
+  height: 100vh;
 }
 .form-box {
   max-width: 600px;
@@ -578,7 +578,7 @@ body,
   top: 50%;
   left: 50%;
   min-width: 100%;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
@@ -783,27 +783,46 @@ body,
     display: block;
     padding-right: 1.875rem;
   }
+  .hero-media.video-wrapper {
+    width: 70%; /* Уникальная ширина для видео */
+    height: 100%;
+    flex-shrink: 0; /* Запрет на сжатие */
+    position: relative;
+  }
   .footer-layout {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
     gap: 3.125rem;
+    height: 100vh;
   }
   .footer-map-block {
-    min-height: 250px;
-    max-height: none;
+    width: 100% !important;
+    /* Убираем жесткий лимит 350px для мобильных устройств */
+    max-width: 100% !important;
+    height: 250px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    background: #f0f0f0;
+  }
+
+  .footer-map-block iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+    display: block !important;
+    pointer-events: none;
+  }
+  .contact-form {
+    height: 100vh;
   }
 }
 /* 5. НОУТБУКИ (1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .hero,
-  .contact-form,
-  .hero-split-container {
-    height: 100vh !important;
-    min-height: 900px;
-  }
-}
+
 /* 4. ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ (480px - 768px) */
 @media (max-width: 768px) {
   /* 1. Основной контейнер для мобильных */
@@ -817,7 +836,12 @@ body,
     padding: 0;
     overflow: hidden;
   }
-
+  section {
+    padding: clamp(2rem, 4vw, 6.875rem) 0 !important;
+  }
+  .contact-form {
+    height: 100vh;
+  }
   /* 2. Видео (верхняя часть) */
   .hero-media.video-wrapper {
     width: 100%;
@@ -861,6 +885,39 @@ body,
   }
   .hero .btn-primary {
     padding: 0.75rem 2rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Ровно одна колонка */
+    gap: 1.25rem; /* Аккуратный отступ между карточками */
+    width: 100%; /* Занимает всю ширину экрана */
+    padding: 0 1rem; /* Небольшой отступ от краев экрана */
+  }
+
+  /* 7. Сами карточки: пусть будут полной ширины и не сжимаются */
+  .service-card {
+    width: 100%;
+    padding: 1.5625rem 1.875rem; /* Твои стандартные отступы */
+    box-sizing: border-box;
+    /* Остальные твои стили... */
+  }
+  .footer-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    height: 100vh;
+    width: 100% !important; /* <--- ОБЯЗАТЕЛЬНО ДОБАВЬ ЭТО! */
+    box-sizing: border-box;
+  }
+
+  .footer-text-block {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 @media (max-width: 522px) {
