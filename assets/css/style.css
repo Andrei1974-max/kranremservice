@@ -397,7 +397,10 @@ form textarea {
   justify-content: space-between;
   align-items: stretch;
   gap: 3.75rem;
-  padding: 1.875rem;
+  padding-top: 2.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-bottom: 1rem;
   max-width: 1450px;
   margin: 0 auto;
 }
