@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const isAtBottom =
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+      window.innerHeight + window.scrollY >= document.body.offsetHeight - 150;
     if (isAtBottom) {
       current = "contact";
     }

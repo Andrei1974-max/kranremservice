@@ -13,6 +13,7 @@ body {
   color: var(--color-dark-gray);
   background-color: #fff;
 }
+
 :root {
   --color-black: #000000;
   --color-dark-gray: #333;
@@ -26,9 +27,11 @@ body {
   --font-main: "Montserrat", sans-serif;
 }
 .container {
-  max-width: 1200px;
+  background-color: var(--color-light-bg);
+  border-radius: 1.25rem;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 1.25rem;
   width: 100%;
 }
 h1.cyber-title-main {
@@ -48,7 +51,7 @@ h1.cyber-title-main {
 }
 h2.section-title {
   text-align: center;
-  font-size: clamp(1.625rem, 3.2vw, 2.5rem);
+  font-size: clamp(1.625rem, 3.2vw, 2rem);
   color: var(--color-black);
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   margin-left: auto;
@@ -57,9 +60,9 @@ h2.section-title {
   width: 100%;
   display: block;
 }
-h3.company-card,
+
 h3.company-section {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-size: clamp(1.25rem, 2vw, 1.85rem);
   margin-bottom: 0.9375rem;
   font-weight: 700;
   width: 100%;
@@ -331,30 +334,44 @@ a {
   width: 100%;
 }
 
-section {
-  padding: 6.875rem 0;
-}
 .services,
 .advantages,
 .about {
   background: var(--color-light-bg);
+}
+.contact-form {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: var(--color-white);
+  padding: 3.125rem 0;
+  height: 100vh;
+  width: 100%;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.875rem;
+  padding-bottom: 1.25rem;
 }
+/* Обычное состояние */
+/* Обычное состояние */
 .service-card {
   background: var(--color-white);
-  padding: 1.875rem;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px var(--color-black);
-  transition: transform 0.3s;
+  border-radius: 12px;
+  padding: 1.5625rem 1.875rem;
+  border-left: 4px solid var(--color-accent);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25); /* Темнее и заметнее */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
+
+/* При наведении */
 .service-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55); /* Очень тёмная и глубокая */
 }
+
 .about {
   padding: 9.375rem;
 }
@@ -387,6 +404,7 @@ form textarea {
 .footer {
   background: #2c3e50;
   color: #ecf0f1;
+  min-height: 100vh;
 }
 .footer-layout {
   display: flex;
@@ -399,8 +417,9 @@ form textarea {
   padding-right: 3rem;
   padding-bottom: 1rem;
   max-width: 1450px;
-  height: 100vh;
   margin: 0 auto;
+  width: 100%;
+  flex-grow: 1; /* Выталкивает copyright-bar вниз */
 }
 .footer-text-block {
   flex: 1;
@@ -408,11 +427,13 @@ form textarea {
   flex-direction: column;
   justify-content: center;
 }
-.contact-form {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: var(--color-white);
-  padding: 3.125rem 0;
-  height: 100vh;
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 200px;
+  min-height: 100vh;
 }
 .form-box {
   max-width: 600px;
@@ -421,7 +442,7 @@ form textarea {
   flex-direction: column;
   gap: 0.9375rem;
   background: var(--color-white);
-  padding: 2.5rem;
+  padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
@@ -494,6 +515,8 @@ form textarea {
   text-align: center;
   font-size: 0.8125rem;
   color: #7f8c8d;
+  width: 100%;
+  margin-top: auto; /* Дополнительно гарантирует прижатие к нижнему краю */
 }
 .services-section {
   padding: 2.5rem 0 3.75rem;
@@ -504,42 +527,20 @@ form textarea {
   grid-template-columns: 1fr 1fr;
   gap: 1.5625rem;
 }
-.service-card {
-  background-color: #f8f9fa;
-  border-radius: 12px;
-  padding: 1.5625rem 1.875rem;
-  border-left: 4px solid var(--color-accent);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-}
+
 .company-description {
-  padding: 3.75rem 0;
-  background-color: var(--color-light-bg);
-  border-radius: 1.25rem;
-  margin-bottom: 2.5rem;
+  padding: 3.75rem 1rem; /* Уменьшили боковые паддинги с 3.75rem до 1rem для мобилок */
+  margin: 0; /* Убрали гигантский margin 2.5rem, который сжимал текст */
+  height: 100%; /* УБРАТЬ 100vh, чтобы блок растягивался под текст */
+  min-height: 100vh; /* Если хочется, чтобы был минимум на весь экран */
+  width: 100%;
 }
 .company-description .content-block {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  /* padding: 0 1.25rem; */
 }
-.company-description .section-title {
-  text-align: center;
-  font-size: 2.125rem;
-  color: #1a2b4c;
-  margin-bottom: 2.5rem;
-  position: relative;
-}
-.company-description .accent-text {
-  color: var(--color-accent);
-  font-weight: bold;
-  font-size: 1.125rem;
-}
+
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: var(--color-white);
@@ -571,14 +572,13 @@ body,
   flex-wrap: nowrap; /* Запрещаем переносить колонки */
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 .bg-video {
   position: absolute;
   top: 50%;
   left: 50%;
   min-width: 100%;
-  min-height: 100vh;
+  height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
@@ -783,46 +783,31 @@ body,
     display: block;
     padding-right: 1.875rem;
   }
-  .hero-media.video-wrapper {
-    width: 70%; /* Уникальная ширина для видео */
-    height: 100%;
-    flex-shrink: 0; /* Запрет на сжатие */
-    position: relative;
-  }
   .footer-layout {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
     gap: 3.125rem;
-    height: 100vh;
   }
-  .footer-map-block {
-    width: 100% !important;
-    /* Убираем жесткий лимит 350px для мобильных устройств */
-    max-width: 100% !important;
-    height: 250px !important;
-    margin: 0 auto !important;
-    display: block !important;
-    border-radius: 12px !important;
-    overflow: hidden !important;
-    background: #f0f0f0;
-  }
-
-  .footer-map-block iframe {
-    width: 100% !important;
-    height: 100% !important;
-    border: 0 !important;
-    border-radius: 12px !important;
-    display: block !important;
-    pointer-events: none;
-  }
-  .contact-form {
-    height: 100vh;
-  }
+  /* .footer-map-block {
+    min-height: 250px;
+    max-height: none;
+  } */
 }
 /* 5. НОУТБУКИ (1024px) */
-
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero,
+  .contact-form,
+  .hero-split-container {
+    height: 100vh !important;
+    min-height: 900px;
+  }
+  /* Было: height: 100vh; */
+  .company-description {
+    height: auto !important;
+  }
+}
 /* 4. ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ (480px - 768px) */
 @media (max-width: 768px) {
   /* 1. Основной контейнер для мобильных */
@@ -836,12 +821,12 @@ body,
     padding: 0;
     overflow: hidden;
   }
-  section {
-    padding: clamp(2rem, 4vw, 6.875rem) 0 !important;
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5625rem;
   }
-  .contact-form {
-    height: 100vh;
-  }
+
   /* 2. Видео (верхняя часть) */
   .hero-media.video-wrapper {
     width: 100%;
@@ -886,38 +871,49 @@ body,
   .hero .btn-primary {
     padding: 0.75rem 2rem;
   }
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Ровно одна колонка */
-    gap: 1.25rem; /* Аккуратный отступ между карточками */
-    width: 100%; /* Занимает всю ширину экрана */
-    padding: 0 1rem; /* Небольшой отступ от краев экрана */
-  }
-
-  /* 7. Сами карточки: пусть будут полной ширины и не сжимаются */
-  .service-card {
-    width: 100%;
-    padding: 1.5625rem 1.875rem; /* Твои стандартные отступы */
-    box-sizing: border-box;
-    /* Остальные твои стили... */
+  .company-description {
+    height: auto !important; /* Даем контенту спокойно выходить за пределы 100vh */
+    padding: 2rem 0;
+    margin: 0;
   }
   .footer-layout {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    padding: 1.5rem;
-    height: 100vh;
-    width: 100% !important; /* <--- ОБЯЗАТЕЛЬНО ДОБАВЬ ЭТО! */
-    box-sizing: border-box;
+    padding: 2rem 0;
+    width: 100%;
   }
 
-  .footer-text-block {
+  .footer-map-block {
+    width: 90% !important;
+    height: 720px !important;
+    margin: 0 auto !important;
+    border: none !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .footer-map-block iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: 0 !important;
+    border-radius: 12px !important;
+  }
+  .form-box {
+    margin: 1.5rem;
+  }
+  .company-description .container {
+    background-color: var(--color-light-bg);
+    border-radius: 1.25rem;
+    /* max-width: 1000px; */
+    margin: 0 auto;
+    /* padding: 1.5625rem 1.875rem; */
     width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  }
+  .company-description .content-block {
+    max-width: 100% !important;
+    padding: 1.5rem !important; /* Уменьшаем отступы, чтобы текст дышал */
   }
 }
 @media (max-width: 522px) {
@@ -955,5 +951,8 @@ body,
   }
   .slide {
     height: 100% !important;
+  }
+  .footer-layout {
+    padding: 1.25rem;
   }
 }
