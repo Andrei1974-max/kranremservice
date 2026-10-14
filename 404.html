@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Страница не найдена — КранРемСервис</title>
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* Стили для страницы 404 */
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: #111;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 20px;
+        margin: 0;
+      }
+      .error-container {
+        max-width: 600px;
+        padding: 40px 20px;
+        background: #1a1a1a;
+        border-radius: 16px;
+        border: 1px solid #f5a623;
+      }
+      .error-code {
+        font-size: 120px;
+        font-weight: 700;
+        color: #f5a623;
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .error-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .error-text {
+        font-size: 18px;
+        color: #aaa;
+        margin-bottom: 30px;
+      }
+      .error-btn {
+        display: inline-block;
+        padding: 14px 40px;
+        background: #f5a623;
+        color: #111;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 40px;
+        transition: 0.3s;
+        font-size: 18px;
+      }
+      .error-btn:hover {
+        background: #d4901f;
+        transform: scale(1.02);
+      }
+      .error-links {
+        margin-top: 25px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+      .error-links a {
+        color: #aaa;
+        text-decoration: none;
+        font-size: 15px;
+        border-bottom: 1px solid transparent;
+        transition: 0.3s;
+      }
+      .error-links a:hover {
+        color: #f5a623;
+        border-bottom-color: #f5a623;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-container">
+      <div class="error-code">404</div>
+      <h1 class="error-title">Страница не найдена</h1>
+      <p class="error-text">
+        К сожалению, такой страницы на сайте нет.<br />
+        Возможно, она была перемещена или удалена.
+      </p>
+
+      <a href="/" class="error-btn">На главную</a>
+
+      <div class="error-links">
+        <a href="/#index">Главная</a>
+        <a href="/#about">О нас</a>
+        <a href="/#services">Услуги</a>
+        <a href="/#contact">Контакты</a>
+      </div>
+    </div>
+  </body>
+</html>
