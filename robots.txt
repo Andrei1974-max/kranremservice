@@ -1,5 +1,0 @@
-User-agent: *
-Disallow: /assets/img/favicon/
-Allow: /
-
-Sitemap: https://кранремсервис.бел/sitemap.xml
